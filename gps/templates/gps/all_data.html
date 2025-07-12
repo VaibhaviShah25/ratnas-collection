@@ -1,0 +1,56 @@
+{% load static %}
+<html>
+    <title>All Data</title>
+    <head>
+        <link rel="stylesheet" href="{% static 'gps/gps_style.css' %}">
+    </head>
+    <body>
+        <a href="{% url 'add-location' %}" class="home-button">Home</a>
+        <h1>All Wifi Scan Results</h1>
+    <form method="GET" action="{% url 'all-data' %}">
+        <input type="text" name="q" placeholder="Search data by Wifi name..." value="{{ request.GET.q }}">
+        <button type="submit" class="search-button">Search</button>
+    </form>
+
+    <div class="container2">
+        <!-- Left: List of ESSIDs -->
+        <div class="left-section">
+            {% if wifi_scans %}
+                {% for data in wifi_scans %}
+                    <div class="data-card">
+                        <a href="{% url 'all-data-detail' data.essid %}">{{ data.essid }}</a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-data">No data available.</p>
+            {% endif %}
+        </div>
+
+        <!-- Right: Full data content -->
+        <div class="right-section">
+            {% if selected_data %}
+                {% for data in selected_data %}
+                <div class="data-card2">
+                    <p><strong>BSSID:</strong> {{ data.bssid }}</p>
+                    <p><strong>ESSID:</strong> {{ data.essid }}</p>
+                    <p><strong>Power:</strong> {{ data.power }}</p>
+                    <p><strong>Beacons:</strong> {{ data.beacons }}</p>
+                    <p><strong>First Time Seen:</strong> {{ data.first }}</p>
+                    <p><strong>Last Time Seen:</strong> {{ data.last }}</p>
+                    <p><strong>Channel:</strong> {{ data.channel }}</p>
+                    <p><strong>Privacy:</strong> {{ data.privacy }}</p>
+                    <p><strong>Cipher:</strong> {{ data.cipher }}</p>
+                    <p><strong>Authentication:</strong> {{ data.authentication }}</p>
+                    <p><strong>IV:</strong> {{ data.iv }}</p>
+                    <p><strong>IP:</strong> {{ data.ip }}</p>
+                    <p><strong>Identifier:</strong> {{ data.iden }}</p>
+                    <p><strong>Key:</strong> {{ data.key }}</p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>Select a network to view full details.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

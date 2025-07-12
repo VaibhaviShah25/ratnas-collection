@@ -1,0 +1,39 @@
+{% extends 'homec.html' %}
+{% load static %}
+{% block content %}
+<!--<header>
+  <div class="logo">Ratna's Collection</div>
+  <nav class="nav-links">
+    <a href="{% url 'homec' %}"><i class="fas fa-home"></i> Home</a>
+    <a href="{% url 'aboutc' %}"><i class="fas fa-info-circle"></i> About</a>
+    <a href="{% url 'loginc' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
+  </nav>
+</header>
+--> 
+
+<div class="about-section fade-in">
+  <div class="about-container slide-up">
+    <h1 class="animate-title">About Ratna's Collection</h1>
+    <p class="tagline fade-in-delay">Elegance in Every Thread. Tradition with a Modern Touch.</p>
+
+    <div class="about-content">
+      <img src="{% static 'images/about-batik.jpg' %}" alt="Fashion" class="about-image scale-in">
+      <div class="about-text slide-left">
+        <h2 class="animate-subtitle">Why Choose Us?</h2>
+        <ul class="feature-list">
+          <li><i class="fas fa-star"></i> <strong>Handpicked Styles:</strong> Elegant, curated fashion made for comfort.</li>
+          <li><i class="fas fa-leaf"></i> <strong>Premium Quality:</strong> High-grade fabrics with luxurious craftsmanship.</li>
+          <li><i class="fas fa-globe-asia"></i> <strong>Culturally Inspired:</strong> Traditional roots blended with modern vibes.</li>
+          <li><i class="fas fa-ruler-combined"></i> <strong>Inclusive Sizes:</strong> Styles that fit and flatter all body types.</li>
+          <li><i class="fas fa-shipping-fast"></i> <strong>Fast Delivery:</strong> Speedy and safe delivery at your doorstep.</li>
+          <li><i class="fas fa-undo-alt"></i> <strong>Easy Returns:</strong> Simple, stress-free return policy.</li>
+        </ul>
+        <p class="closing-line fade-in-delay-2">
+          At Ratna’s Collection, we don’t just sell clothes — we bring stories to life through style.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

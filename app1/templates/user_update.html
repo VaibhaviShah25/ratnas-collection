@@ -1,0 +1,15 @@
+{% extends 'index_old.html' %}
+
+{% block content %}
+<div class="profile-container">
+
+    <h2 class="profile-title">✏️ Update Profile</h2>
+
+    <form method="POST" class="update-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save Changes">
+    </form>
+
+</div>
+{% endblock content %}

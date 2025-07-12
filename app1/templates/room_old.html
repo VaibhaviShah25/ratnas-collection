@@ -1,0 +1,38 @@
+{% extends 'index_old.html' %}
+
+{% block content %}
+<div class="room-chat">
+
+    <h2 class="room-title">{{ rooms.name }}</h2>
+    <p class="room-description">{{ rooms.descriptor }}</p>
+
+    <h3 class="conversation-heading">🗨️ Conversations</h3>
+    <hr class="divider"/>
+
+    {% if room_messages|length == 0 %}
+        <div class="message">
+            <p>No messages in this room yet.</p>
+        </div>
+    {% else %}
+        {% for message in room_messages %}
+            <div class="message">
+                <p>{{ message.text }}</p>
+                <small>
+                    By <a href="{% url 'user-profile' message.host.id %}">@{{ message.host }}</a> • {{ message.created|timesince }} ago
+                </small>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if request.user.is_authenticated %}
+        <form method="POST" class="comment-form">
+            {% csrf_token %}
+            <textarea name="body" rows="4" placeholder="Type your message..."></textarea>
+            <input type="submit" value="Send">
+        </form>
+    {% else %}
+        <p class="login-prompt">🔐 <a href="{% url 'login' %}">Log in</a> to post messages.</p>
+    {% endif %}
+
+</div>
+{% endblock content %}

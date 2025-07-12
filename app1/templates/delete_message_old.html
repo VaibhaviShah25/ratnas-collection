@@ -1,0 +1,19 @@
+{% extends 'index_old.html' %}
+
+{% block content %}
+<div class ="form-page">
+    <h1>Delete Message</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {% if request.user == obj.host %}
+            
+            <p>Are you sure you want to delete the message '{{ obj.text }}' ?</p>
+            <a href = "{% url 'activity' %}"> Go Back </a>
+            <input type="Submit" value="Delete"/>
+        {% else %}
+            <p>You are not authorized to delete this message.</p>
+            <a href = "{% url 'activity' %}"> Go Back </a>
+        {% endif %}
+    </form>
+</div>
+{% endblock content %}

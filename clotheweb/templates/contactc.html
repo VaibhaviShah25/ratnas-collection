@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact Us - Ratna's Collection</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">Ratna's Collection</div>
+    <nav class="nav-links">
+      <a href="{% url 'homec' %}">🏠 Home</a>
+      <a href="{% url 'aboutc' %}">ℹ️ About</a>
+      <a href="{% url 'loginc' %}">🔐 Log In</a>
+    </nav>
+  </header>
+    <div class="form-container">
+        <h2>Contact Us</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

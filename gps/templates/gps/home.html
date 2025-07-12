@@ -1,0 +1,88 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPS Tracker Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #0d0d0d;
+      color: #00ff00;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    
+    h1 {
+      color: #39ff14;
+      margin-bottom: 40px;
+      text-shadow: 0 0 8px #39ff14;
+    }
+    
+    .container {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .card {
+      background-color: #111;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+      text-align: center;
+      width: 200px;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: #00ff00;
+      border: 1px solid #00ff00;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      background-color: #1a1a1a;
+      box-shadow: 0 0 20px #00ff00;
+    }
+    
+    .card h2 {
+      margin: 20px 0 0;
+      font-size: 22px;
+      color: #00ff00;
+      text-shadow: 0 0 5px #00ff00;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <h1>GPS Tracker Dashboard</h1>
+
+  <div class="container">
+    <a href="{% url 'gps_html' %}" class="card">
+      <h2>GPS Tracker</h2>
+      <p>Track Your Location</p>
+    </a>
+      <a href="{% url 'gps_record' %}" class="card">
+      <h2>Recorder</h2>
+      <p>Record Voice Notes</p>
+    </a>
+
+    <a href="{% url 'gps_camera' %}" class="card">
+      <h2>Camera</h2>
+      <p>Capture & View Images</p>
+    </a>
+  </div>
+</body>
+
+</html>

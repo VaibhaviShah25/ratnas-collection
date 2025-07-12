@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3D Cart Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+  <header>
+    <div class="logo">Ratna's Collection</div>
+    <nav class="nav-links">
+      <a href="{% url 'homec' %}">🏠 Home</a>
+      <a href="{% url 'aboutc' %}">ℹ️ About</a>
+      <a href="{% url 'loginc' %}">🔐 Log In</a>
+    </nav>
+  </header>
+
+  <h1>Your Cart</h1>
+  <div class="cart-container">
+  {% for entry in cart_data %}
+    <div class="card">
+      <img src="{{ entry.item.product.image.url }}" width="100">
+      <h3>{{ entry.item.product.name }}</h3>
+      <p>Price: ₹{{ entry.item.product.price }}</p>
+      <form method="post" action="{% url 'update_quantity' entry.item.id %}">
+      {% csrf_token %}
+        <div class="quantity-controls">
+          <button name="action" value="decrease">–</button>
+          <span>{{ entry.item.quantity }}</span>
+          <button name="action" value="increase">+</button>
+        </div>
+      </form>
+
+      <p><strong>Subtotal: ₹{{ entry.subtotal }}</strong></p>
+      <div class="offer">10% OFF</div>
+      <a href="{% url 'orderc' %}" class="buy-button">Buy Now</a>
+      <form method="POST" action="{% url 'remove_from_cart' entry.item.id %}">
+        {% csrf_token %}
+        <button type="submit" class="remove-button">Remove</button>
+      </form>
+    </div>
+  {% empty %}
+    <p>Your cart is empty.</p>
+  {% endfor %}
+</div>
+
+<hr>
+<h2 style="text-align:center;">Total Amount: ₹{{ total_amount }}</h2>
+
+</body>
+</html>

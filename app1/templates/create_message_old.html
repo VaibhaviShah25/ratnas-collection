@@ -1,0 +1,23 @@
+{% extends "index_old.html" %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class = "form-page">
+    <h1>Message Form</h1>
+    <form method="POST" action="">
+        {% csrf_token %}   <!-- This is used to send POST request into the server-->
+        {{ form.as_p }}
+        <input type = "Submit" value = "Submit"/>
+    
+    </form>
+</div>
+
+{% else %}
+
+    <p> You are not logged in! <a href="{% url 'login' %}">Login</a></p>
+
+{% endif %}
+
+{% endblock content %}

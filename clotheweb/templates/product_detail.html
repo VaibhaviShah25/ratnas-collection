@@ -1,0 +1,49 @@
+{% extends 'homec.html' %}
+{% load static %}
+{% block content %}
+<div class="product-detail-container">
+  <div class="product-card1">
+    <div class="left-image">
+      <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    </div>
+    <div class="right-details">
+      <h1 class="product-name1">{{ product.name }}</h1>
+      <p class="desc">{{ product.description }}</p>
+      <div class="price-block">
+      <span class="actual-price">₹{{ product.price }}</span>
+      <span class="original-price">₹{{ product.original_price }}</span>
+      <span class="discount">20% OFF</span>
+      </div>
+
+      <div class="ratings">⭐ 4.5 (120 Reviews)</div>
+      
+
+      <div class="size-chart">
+        <strong>Available Sizes:</strong>
+        <div class="sizes">
+          <span>S</span><span>M</span><span>L</span><span>XL</span>
+        </div>
+      </div>
+
+      <div class="variants">
+        <strong>More Styles:</strong>
+        <div class="variant-colors">
+          <span class="variant" style="background-color:#f5a9b8;"></span>
+          <span class="variant" style="background-color:#a3d5ff;"></span>
+          <span class="variant" style="background-color:#ffd6a5;"></span>
+        </div>
+      </div>
+
+      <span><span>
+      <div class="product-buttons">
+        <form method="post" action="{% url 'add_to_cart' product.id %}">{% csrf_token %}
+          <button type="submit">🛒 Add to Cart</button>
+        </form>
+        <form method="post" action="{% url 'orderc' %}">{% csrf_token %}
+          <button type="submit" >✅ Place Order</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

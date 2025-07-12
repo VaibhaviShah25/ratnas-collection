@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Windows Web CMD</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      font-family: Consolas, monospace;
+      padding: 20px;
+    }
+    #output {
+      white-space: pre-wrap;
+      min-height: 300px;
+      margin-bottom: 10px;
+    }
+    #cmdLine {
+      display: flex;
+    }
+    #cmdPrefix {
+      color: lightgreen;
+    }
+    #cmdInput {
+      flex: 1;
+      background: black;
+      border: none;
+      color: white;
+      font-family: inherit;
+      font-size: 16px;
+      outline: none;
+    }
+    .error { color: red; }
+    #openCmdButton {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #openCmdButton:hover {
+      background-color: darkgreen;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Web CMD (Local + SSH)</h2>
+<div id="output"></div>
+<div id="cmdLine">
+  <span id="cmdPrefix">C:\Users\You></span>
+  <input type="text" id="cmdInput" autofocus autocomplete="off" />
+</div>
+<button id="openCmdButton">Open System CMD</button>
+
+<script>
+  const cmdInput = document.getElementById("cmdInput");
+  const output = document.getElementById("output");
+  const prefix = document.getElementById("cmdPrefix");
+  const openCmdButton = document.getElementById("openCmdButton");
+
+  cmdInput.addEventListener("keydown", async (e) => {
+    if (e.key === "Enter") {
+      const command = cmdInput.value;
+      output.innerHTML += `\n${prefix.textContent}${command}`;
+      cmdInput.value = "";
+
+      if (!command.trim()) return;
+
+      try {
+        const res = await fetch("http://localhost:3000/cmd", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ command })
+        });
+
+        const data = await res.json();
+        output.innerHTML += `\n${data.output}`;
+      } catch (err) {
+        output.innerHTML += `\n<span class="error">Error: ${err.message}</span>`;
+      }
+
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+  });
+
+  // Open System CMD when the button is clicked
+  openCmdButton.addEventListener("click", async () => {
+    try {
+      const res = await fetch("http://localhost:3000/open-cmd", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const data = await res.json();
+      output.innerHTML += `\n${data.output}`;
+    } catch (err) {
+      output.innerHTML += `\n<span class="error">Error: ${err.message}</span>`;
+    }
+
+    window.scrollTo(0, document.body.scrollHeight);
+  });
+</script>
+
+</body>
+</html>

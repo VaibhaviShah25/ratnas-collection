@@ -1,0 +1,28 @@
+{% extends 'index_old.html' %}
+
+{% block content %}
+<div class="comment-wrapper">
+
+<h1>{{rooms.name}} </h1>
+
+<p> {{rooms.descriptor}} </p>    
+
+
+    <h3> Conversations </h3>
+    <hr/>
+
+    <div class="comment-item">
+        {% if len == 0 %}
+                <h3> No messages in this room yet </h3>
+        {% else%}
+            {% for messsage in room_messages %}
+                
+            <h3><a href="{% url 'user-profile' messsage.host.id %}">@{{ messsage.host }} </a> - {{ messsage.created|timesince }} ago</h3>
+            <p> {{ messsage }} </p>
+
+            {% endfor %}
+        {% endif %}
+    </div>  
+</div>
+
+{% endblock content %}

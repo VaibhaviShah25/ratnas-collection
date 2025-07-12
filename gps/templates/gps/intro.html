@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defence Officers Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'gps/style2.css' %}">
+</head>
+<body>
+    <div class="section video-section">
+        <video autoplay loop muted>
+            <source src="{% static 'PBL/main/earth.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="overlay">
+            <h1 id="animated-text"></h1>
+        </div>
+
+        <div class="navbar">
+            <a href="{% url 'space' %}">Home </a>
+            <a href="{% url 'gps' %}">Records</a>
+            <a href="{% url 'add-location' %}">Map</a>
+            <a href="#">Audio File</a>
+        </div>
+    </div>
+
+    <div class="section content-section">
+        <h1>Welcome to Defence Officers Portal</h1>
+        <p>Secure and reliable information hub.</p>
+    </div>
+
+    <script src="{% static 'gps/script2.js' %}"></script>
+</body>
+</html>

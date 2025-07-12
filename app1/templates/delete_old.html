@@ -1,0 +1,18 @@
+{% extends 'index_old.html' %}
+
+{% block content %}
+<div class ="form-page">
+    <h1>Delete Room</h1>
+    <form method="POST" action="">
+        {% if request.user == obj.host %}
+            {% csrf_token %}
+            <p>Are you sure you want to delete the room '{{ obj.name }}'?</p>
+            <a href = "{% url 'display' %}"> Go Back </a>
+            <input type="Submit" value="Delete"/>
+        {% else %}
+            <p>You are not authorized to delete this room.</p>
+            <a href = "{% url 'display' %}"> Go Back </a>
+        {% endif %}
+    </form>
+</div>
+{% endblock content %}

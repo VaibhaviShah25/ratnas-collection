@@ -1,0 +1,45 @@
+{% extends 'index_old.html' %}
+
+{% block content %}
+
+{% if page == 'login' %}
+<div class="form-page">
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <label> Username: </label>
+        <input type="text" name="username" placeholder="Enter Username" required>
+
+        <label> Password: </label>
+        <input type="password" name="password" placeholder="Enter Password" required>   
+
+        
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <input type="submit" value="Login">
+        <p> Don't have an account? <a href="{% url 'register' %}">Signup</a></p>
+    </form>
+</div>
+
+{% else%}
+
+<div class="form-page">
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        {{form.as_p}}
+        <input type="submit" value="Signup">
+
+        <p> Already have an account? <a href="{% url 'login' %}">Login</a></p>
+    </form>
+</div>
+
+{% endif %}
+
+{% endblock content %}

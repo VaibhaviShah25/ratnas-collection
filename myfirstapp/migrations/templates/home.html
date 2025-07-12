@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Device Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f3f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 20px;
+      color: #333;
+    }
+
+    .device-item {
+      background-color: #f8f9fa;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .device-status {
+      float: right;
+      font-weight: bold;
+    }
+
+    .active {
+      color: green;
+    }
+
+    .inactive {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>My Device Dashboard</h1>
+
+  <div class="dashboard">
+    <div class="card">
+      <h3>Project Info</h3>
+      <p><strong>Project Name:</strong> Device Monitor</p>
+      <p><strong>Project ID:</strong> abc-device-123</p>
+      <p><strong>Owner:</strong> Your Name</p>
+    </div>
+
+    <div class="card">
+      <h3>Devices</h3>
+      <div class="device-item">Device 1 <span class="device-status active">Active</span></div>
+      <div class="device-item">Device 2 <span class="device-status inactive">Inactive</span></div>
+      <div class="device-item">Device 3 <span class="device-status active">Active</span></div>
+      <div class="device-item">Device 4 <span class="device-status inactive">Inactive</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Monitoring</h3>
+      <p>Create your monitoring dashboard and set alerts for each device.</p>
+      <button>View Monitoring</button>
+    </div>
+
+    <div class="card">
+      <h3>Cloud Platform Status</h3>
+      <p>All services normal</p>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ratna's Collection</title>
+
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.87/build/spline-viewer.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+
+<body>
+
+
+  <header>
+    <div class="logo">Ratna's Collection</div>
+    <nav class="nav-links">
+      <a href="{% url 'homec' %}">🏠 Home</a>
+      <a href="{% url 'aboutc' %}">ℹ️ About</a>
+      <a href="{% url 'loginc' %}">🔐 Log In</a>
+    </nav>
+  </header>
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.22/build/spline-viewer.js"></script>
+
+
+
+<!-- 3D background -->
+
+
+<spline-viewer url="https://prod.spline.design/tErwTt7V5ylSbbz2/scene.splinecode" class="vaibhavi-shah"></spline-viewer>
+
+<!-- Login form -->
+<div class="container">
+  <div class="login-box">
+    <h1 class="title">Welcome Back</h1>
+    <p class="subtitle">Login to your Ratna's Collection account</p>
+    {% if page == 'login' %}
+      <form action="" method="POST">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" placeholder="Enter Username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" placeholder="Enter Password" required>
+
+        <div class="options">
+          <label class="remember">
+            <input type="checkbox" /> Remember me
+          </label>
+          <a href="#" class="forgot">Forgot Password?</a>
+        </div>
+        <input type="submit" name="Sign In" >
+        <p class="signup">Don't have an account? <a href="{% url 'registerc' %}">Sign up</a></p>
+      </form>
+    {% else %}
+      <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign Up</button>
+        <p class="signup">Already have an account? <a href="{% url 'loginc' %}">Log in</a></p>
+      </form>
+    {% endif %}
+  </div>
+</div>
+</body>
+</html>
+

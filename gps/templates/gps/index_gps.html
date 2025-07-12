@@ -1,0 +1,92 @@
+
+{% load static %}
+
+{% extends 'gps/space.html' %}
+
+{% block content %}
+  <!-- Section 1 -->
+  <nav>
+    <a href="{% url 'gps' %}">Home</a>
+    <a href="{% url 'gps_html' %}">Research</a>
+    <a href="#">Projects</a>
+    <a href="#">Updates</a>
+  </nav>
+
+  <div class="section1">
+    <video autoplay muted loop>
+      <source src="{% static 'PBL/main/EHome.mp4' %}" type="video/mp4" />
+      Your browser does not support HTML5 video.
+    </video>
+  
+    <h1 style="text-align: center;">
+      Explore the World with<br>
+      ISRO
+    </h1>
+  
+   <!--- <p style="text-align: center;">
+      ISRO and space unite as one, reaching beyond where dreams have spun.
+    </p>-->
+  </div>  
+  
+
+ <!-- Section 2 -->
+<div class="section2">
+    <video autoplay muted loop class="bg-video">
+      <source src="{% static 'PBL/main/space.mp4' %}" type="video/mp4" />
+      Your browser does not support HTML5 video.
+    </video>
+  
+    <div class="cards-container">
+      <div class="card">
+        <h2>Communication Satellites</h2>
+        <p>Supports telecommunication, television broadcasting, satellite news gathering, societal applications, weather forecasting, disaster warning and Search and Rescue operation services</p>
+      </div>
+      <div class="card">
+        <h2>Earth Observation Satellites</h2>
+        <p>The largest civilian remote sensing satellite constellation in the world - thematic series of satellites supporting multitude of applications in the areas of land and water resources; cartography; and ocean & atmosphere</p>
+      </div>
+      <div class="card">
+        <h2>Scientific Spacecraft</h2>
+        <p>Spacecraft for research in areas like astronomy, astrophysics, planetary and earth sciences, atmospheric sciences and theoretical physics.</p>
+      </div>
+      <div class="card">
+        <h2>Navigation Satellites</h2>
+        <p>Satellites for navigation services to meet the emerging demands of the Civil Aviation requirements and to meet the user requirements of the positioning, navigation and timing based on the independent satellite navigation system.</p>
+      </div>
+      <div class="card">
+        <h2>Student Satellites</h2>
+        <p>ISRO's Student Satellite programme is envisaged to encourage various Universities and Institutions for the development of Nano/Pico Satellites.</p>
+      </div>
+    </div>
+  </div>
+  
+
+ <!-- Section 3 -->
+<div class="section3">
+  <div class="login-box">
+    <h2>Login</h2>
+    <form onsubmit="return handleLogin(event)">
+      <input type="text" id="username" placeholder="Username" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <input type="submit" value="Login" />
+      <p id="error-msg" style="color: red; display: none;">Invalid credentials</p>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}
+<script>
+  function handleLogin(event) {
+    event.preventDefault();
+    const user = document.getElementById("username").value.trim();
+    const pass = document.getElementById("password").value.trim();
+
+    if (user === "LEO" && pass === "TH67") {
+      window.location.href = "{% url 'space' %}"; // new webpage
+    } else {
+      window.location.href = "{% url 'error' %}"; // error page
+    }
+    return false;
+  }
+</script>
+

@@ -1,0 +1,37 @@
+{% extends 'homec.html' %}
+{% load static %}
+{% block content %}
+
+<div class="payment-section">
+  <div class="payment-container">
+    <h2 class="payment-title">💳 Choose Your Payment Method</h2>
+    
+    <form method="post" action="{% url 'payment_confirm' %}" class="payment-form">
+      {% csrf_token %}
+      
+      <div class="payment-option slide-in">
+        <input type="radio" id="upi" name="payment_method" value="UPI" required>
+        <label for="upi"><i class="fas fa-mobile-alt"></i> UPI</label>
+      </div>
+      
+      <div class="payment-option slide-in">
+        <input type="radio" id="card" name="payment_method" value="Card">
+        <label for="card"><i class="fas fa-credit-card"></i> Debit/Credit Card</label>
+      </div>
+      
+      <div class="payment-option slide-in">
+        <input type="radio" id="netbanking" name="payment_method" value="NetBanking">
+        <label for="netbanking"><i class="fas fa-university"></i> Net Banking</label>
+      </div>
+      
+      <div class="payment-option slide-in">
+        <input type="radio" id="cod" name="payment_method" value="COD">
+        <label for="cod"><i class="fas fa-money-bill-wave"></i> Cash on Delivery</label>
+      </div>
+      
+      <button type="submit" class="confirm-payment-button">Proceed to Pay</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

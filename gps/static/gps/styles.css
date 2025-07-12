@@ -1,0 +1,146 @@
+body, html {
+  cursor: url('flight-mode.png'), auto;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  nav {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+  }
+  
+  nav a {
+    color: white;
+    margin: 0 20px;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .section1 {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .section1 video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  .section1 h1 {
+    font-size: 60px;
+    z-index: 1;
+  }
+  .section1 p{
+    font-size: 20px;
+    z-index: 1;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .section2 {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+  
+  
+  .section2 {
+    cursor: url('flight-mode.png'), auto;
+  }
+  
+ 
+  
+  
+  .section2 .bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.4); /* darkens video for better contrast */
+  }
+  
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    z-index: 1;
+  }
+  
+  .card {
+    background: rgba(0, 0, 0, 0.6);
+    color: #02eee7a0;
+    padding: 25px;
+    width: 300px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 10px #02f594;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #07bae2;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #000000, 0 0 40px rgb(3, 183, 243), 0 0 60px rgb(6, 22, 22);
+  }
+  
+  
+  .section3 {
+    padding: 100px 50px;
+    background-image: url('jpg');
+    background-color: black;
+    background-size: cover;
+    
+    background-position: center;
+
+    color: white;
+  }
+  
+  .login-box {
+    max-width: 400px;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 10px;
+  }
+  
+  .login-box input[type="text"],
+  .login-box input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .login-box input[type="submit"] {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

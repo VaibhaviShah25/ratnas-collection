@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>StudyBuddy - Recent Activities</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f3f6fd;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+    }
+
+    .activity-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .activity {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 8px 8px 20px #dce1ea, -8px -8px 20px #ffffff;
+      transition: transform 0.2s ease-in-out;
+      position: relative;
+    }
+
+    .activity:hover {
+      transform: translateY(-4px);
+    }
+
+    .activity .buttons {
+      margin-bottom: 10px;
+    }
+
+    .activity .buttons a {
+      display: inline-block;
+      margin-right: 12px;
+      padding: 6px 14px;
+      font-size: 0.85rem;
+      color: white;
+      background-color: #007bff;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .activity .buttons a.delete {
+      background-color: #dc3545;
+    }
+
+    .activity .buttons a:hover {
+      background-color: #0056b3;
+    }
+
+    .activity .buttons a.delete:hover {
+      background-color: #b02a37;
+    }
+
+    .activity small {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    .activity small a {
+      color: #4a69bd;
+      text-decoration: none;
+    }
+
+    .activity small a:hover {
+      text-decoration: underline;
+    }
+
+    .activity p {
+      color: #444;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-top: 5px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .activity {
+        padding: 20px;
+      }
+
+      .activity .buttons a {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🕒 Recent Activities</h1>
+  <div class="activity-list">
+    {% for message in room_messages %}
+    <div class="activity">
+      <div class="buttons">
+        <a href="{% url 'create-message' %}">Reply</a>
+        <a href="{% url 'delete-message' message.id %}" class="delete">Delete</a>
+      </div>
+      <small>
+        <a href="{% url 'user-profile' message.host.id %}">@{{ message.host }}</a>
+        • {{ message.created|timesince|default:"just now" }} ago
+        • in <strong>"{{ message.room }}"</strong>
+      </small>
+      <p>{{ message }}</p>
+    </div>
+    {% empty %}
+    <div class="activity">
+      <p>No recent activities yet.</p>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html>

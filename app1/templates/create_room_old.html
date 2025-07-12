@@ -1,0 +1,14 @@
+{% extends "index_old.html" %}
+<!--This form basically adds the data to the database   Client __> Machine --> 
+
+{% block content %}
+    <div class = "form-page">
+    <h1>Room Form</h1>
+    <form method="POST" action="">
+        {% csrf_token %}   <!-- This is used to send POST request into the server-->
+        {{ form.as_p }}     
+        <input type = "Submit" value = "Submit"/>
+    
+    </form>
+    </div>
+{% endblock content %}

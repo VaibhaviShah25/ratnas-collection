@@ -1,0 +1,450 @@
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+/* Header Container */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+}
+
+/* Logo Text */
+.header-name {
+    font-family: 'Satisfy', cursive;
+    font-size: 2rem;
+    color: #007bff;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+}
+
+
+/* Auth Info aligned to right */
+.auth-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.auth-info a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-info a:hover {
+    text-decoration: underline;
+}
+
+/* Container Layout */
+.home-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+    padding: 0 40px;
+}
+
+/* Greeting Area */
+.greet-user {
+    font-size: 18px;
+    color: #6c5ce7; /* Soft purple */
+    font-weight: 500;
+    font-style: italic;
+    /*background-color: #f0f0ff;*/
+    padding: 6px 12px;
+    /*border-radius: 8px;*/
+    margin-top: 6px;
+    margin-left: 20px;
+    width: fit-content;
+    /*box-shadow: 0 1px 4px rgba(108, 92, 231, 0.2);*/
+}
+/* Topics Panel */
+.topics-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.topics-container h3 {
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.topics-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.topics-container li {
+    margin-bottom: 12px;
+}
+
+.topics-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.topics-container a:hover {
+    text-decoration: underline;
+}
+
+/* Search Bar */
+form {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin: 20px 0;
+}
+
+form input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+/* General Page Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Form Page Styles */
+.form-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.form-page h1 {
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+/* Form Styling */
+.form-page form {
+    width: 100%;
+    max-width: 600px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+/* Form Fields */
+.form-page form label {
+    font-weight: bold;
+    margin-top: 15px;
+    display: block;
+}
+
+.form-page form input,
+.form-page form textarea,
+.form-page form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* Submit Button */
+.form-page form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.form-page form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+/* Rooms Panel */
+.rooms-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.rooms-container h1 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.rooms-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.rooms-container a:hover {
+    text-decoration: underline;
+}
+
+/* Individual Room */
+.room-item {
+    border-top: 1px solid #e0e0e0;
+    padding: 15px 0;
+}
+
+.room-item h2 {
+    margin: 5px 0;
+}
+
+.room-item small {
+    color: #666;
+}
+
+/* Action Buttons */
+.room-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.action-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    border:none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-sizing: border-box;
+}
+
+.action-btn.delete {
+    background-color: #e74c3c;
+}
+
+.action-btn.update {
+    background-color: #f39c12;
+    color: #fff;
+}
+
+.action-btn.message {
+    background-color: #3498db;
+}
+
+.action-btn:hover {
+    opacity: 0.95;
+    transform: scale(1.01);
+}
+
+/* Activity Panel */
+.activity-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.room-chat {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.room-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #2c3e50;
+}
+
+.room-description {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.conversation-heading {
+    margin-top: 30px;
+    color: #2c3e50;
+    font-size: 1.4rem;
+}
+
+.divider {
+    margin-bottom: 20px;
+}
+
+.message {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #007bff;
+}
+
+.message p {
+    margin: 0 0 8px;
+    color: #333;
+}
+
+.message small {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.message a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.message a:hover {
+    text-decoration: underline;
+}
+
+.comment-form {
+    margin-top: 30px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.comment-form input[type="submit"] {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.comment-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.login-prompt {
+    text-align: center;
+    margin-top: 40px;
+    color: #444;
+}
+
+.login-prompt a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-prompt a:hover {
+    text-decoration: underline;
+}
+
+
+.profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.profile-title {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.profile-details p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.update-btn {
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background-color 0.2s ease;
+}
+
+.update-btn:hover {
+    background-color: #0056b3;
+}
+
+.update-form input[type="text"],
+.update-form input[type="email"],
+.update-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.update-form input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.update-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}

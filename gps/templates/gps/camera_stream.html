@@ -1,0 +1,12 @@
+{% load static %}
+<html>
+    <head>
+    <title>Camera Stream</title>
+    <link rel="stylesheet" href="{% static 'gps/gps_style.css' %}">
+    </head>
+    <body>
+
+        <h3>Live Camera Stream</h3>
+            <img src="http://127.0.0.1:5000/video" alt="Webcam Stream" width="100%" style="max-width: 500px; border: 2px solid #4CAF50; border-radius: 8px;">
+    </body>
+</html>

@@ -1,0 +1,82 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPS Tracker</title>
+  
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="{% static 'gps/gps_style.css' %}">
+  
+</head>
+<body>
+
+<div class="container">
+  <!-- Map Section -->
+  <div class="map-section">
+    <div id="map"></div>
+  </div>
+
+  <!-- Info Section -->
+  <div class="info-section">
+    <div class="left-panel">
+      <p><strong>Time:</strong> <span id="time"></span></p>
+      <p><strong>Location:</strong> <span id="location"></span></p>
+      <p><strong>Date:</strong> <span id="date"></span></p>
+    </div>
+
+    <form method="POST" action="{% url 'add-location' %}" enctype="multipart/form-data" id="locationForm">
+      {% csrf_token %}
+      
+      <!-- Hidden Fields -->
+      <input type="hidden" id="location_name" name="location_name">
+      <input type="hidden" id="latitude" name="latitude">
+      <input type="hidden" id="longitude" name="longitude">
+
+      <!-- Image Upload -->
+      <input type="file" id="photo" name="photo" accept="image/*" capture="environment" hidden>
+      <!-- Audio Upload -->
+      <input type="file" id="audio" name="audio" accept="audio/*" hidden>
+
+      <input type="submit" value="Submit" class="save-button" />
+    </form>
+
+    <div class="right-panel">
+      <p><strong>Camera:</strong> <span id="image-count">0 Images</span></p>
+      <button id="capture-image">Capture Image</button>
+
+      <p><strong>Recordings:</strong></p>
+      <button id="start-rec">Start Recording</button>
+      <button id="stop-rec">Stop Recording</button>
+      <ul id="voice-list"></ul>
+    </div>
+    <div class="wifi-data">
+      <a href="{% url 'show-data' %}" class="show-data-button">Show Data</a>
+      <a href="{% url 'console' %}" class="console-button">Console</a>
+    
+      <div class="location-data">
+        <p>Wifi Name : </p>
+        {% for wifi_scan in wifi_scans|slice:"2" %}
+         <a href="{% url 'all-data-detail' wifi_scan.essid %}">{{ wifi_scan.essid }}<a>
+        {% endfor %}
+        <a href="{% url 'all-data' %}">All data</a>
+      </div>
+    </div>
+    <!-- Just below your map or wherever you want to show it -->
+    <div class="webcam-stream">
+      <a href="{% url 'camera-stream' %}"><input type="submit" value="Start webcam" class="start-webcam"/></a>
+    </div>
+  </div>
+</div>
+
+
+<script src="{% static 'gps/gps_script.js' %}"></script>
+
+
+</body>
+</html>
+

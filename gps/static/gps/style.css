@@ -1,0 +1,209 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.video-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    font-size: 1px;
+    top: 40%;
+    left: 45%;
+    transform: translate(-10%, -10%);
+    text-align: center;
+    color: rgb(15, 2, 2);
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 0 0 15px rgba(202, 0, 0, 0.977); /* Neon red glow */
+}
+
+.navbar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 50px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: rgb(214, 13, 13);
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 0 0 10px rgba(229, 7, 7, 0.8); /* Neon red glow */
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: #051308;
+    text-shadow: 0 0 10px #ff0000;
+}
+
+.content-section {
+    text-align: center;
+    padding: 50px;
+}
+/*
+
+body, html {
+    cursor: url('flight-mode.png'), auto;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+*/
+    nav {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 10;
+    }
+    
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    
+    .section1 {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .section1 video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    
+    .section1 h1 {
+      font-size: 60px;
+      z-index: 1;
+    }
+    .section1 p{
+      font-size: 20px;
+      z-index: 1;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .section2 {
+        position: relative;
+        min-height: 100vh;
+        overflow: visible;
+        padding: 60px 20px;
+        z-index: 1;
+      }
+      
+    
+    
+    .section2 {
+      cursor: url('PBL/main/flight-mode.png'), auto;
+    }
+    
+   
+    
+    
+    .section2 .bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.3); /* darkens video for better contrast */
+    }
+    
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .card {
+      background: rgba(0, 0, 0, 0.6);
+      color: #02eee7a0;
+      padding: 25px;
+      width: 300px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 10px #02f594;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid #07bae2;
+    }
+    
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #000000, 0 0 40px rgb(3, 183, 243), 0 0 60px rgb(6, 22, 22);
+    }
+    
+    
+    .section3 {
+      padding: 100px 50px;
+      background-image: url('jpg');
+      background-color: black;
+      background-size: cover;
+      
+      background-position: center;
+  
+      color: white;
+    }
+    
+    .login-box {
+      max-width: 400px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 10px;
+    }
+    
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+    
+    .login-box input[type="submit"] {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    

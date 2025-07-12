@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Site{% endblock %}</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/stylesss.css' %}">
+    
+    <!-- Add this line -->
+    {% block style %}{% endblock %}
+</head>
+
+<body>
+    {% block content %}
+<div class="header">
+    <div class="header-name">
+        StudyBuddy
+    </div>
+
+    <div class="auth-info">
+        <p>Current User: <a href="{% url 'user-profile' request.user.id %}">{{ request.user }}</a></p>
+        <p>Authenticated: {{ request.user.is_authenticated }}</p>
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </div>
+</div>
+<div class="greet-user">
+    Hello {{ request.user.username }}! 
+</div>
+<form method="GET" action="{% url 'display' %}">
+    <input type="text" name="q" placeholder="Search rooms by topic..." value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
+</form>
+
+<div class="home-container">
+
+    <!-- Left Panel: Topics -->
+    <div class="topics-container">
+        <h3>Browse Topics</h3>
+        <ul>
+            <li><a href="{% url 'display' %}?q=Python">Python</a></li>
+            <li><a href="{% url 'topic' %}">All</a></li>
+        </ul>
+    </div>
+
+    <!-- Middle Panel: Rooms -->
+    <div class="rooms-container">
+        <h1>Explore Rooms</h1>
+        <div>
+            <a href="{% url 'create-room' %}">➕ Create Room</a>
+        </div>
+        <h5>{{ rooms.count }} rooms available</h5>
+        
+        {% for room in rooms %} 
+        <div class="room-card">
+            <div class="room-item">
+                <button class = "action-btn">
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'delete-room' room.id %}">🗑 Delete</a> |
+                    <a href="{% url 'update-room' room.id %}">✏ Update</a> |
+                    <a href="{% url 'create-message' %}">💬 Message</a> |
+                {% endif %}
+                <a href="{% url 'user-profile' room.host.id %}">@{{ room.host.username }}</a>
+                </button>
+            </div>
+            <div class = "room-details">
+                <h2><!--#{{ room.id }} →--> <a href="/room/{{ room.id }}">{{ room.name }}</a></h2>
+                <small>{{ room.descriptor }}</small><br />
+                <small><strong>Topic:</strong> {{ room.topic.name }}</small>
+            </div>
+        </div>  
+        {% endfor %}
+    
+</div>
+
+    <!-- Right Panel: Activity -->
+    <div class="activity-container">
+        {% include "activity_component_old.html" %}
+    </div>
+</div>
+{% endblock content %}
+</body>
+</html>

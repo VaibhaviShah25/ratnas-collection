@@ -1,0 +1,15 @@
+9/6
+
+
+add to cart 
+Cart - two different links 
+
+Enable cart button 
+
+10/6
+
+Enable cart button 
+fix registration form
+
+
+<!--<form method="post" action="{% url 'remove_from_cart' item.id %}">{% csrf_token %}-->

@@ -1,0 +1,151 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ratna's Collection</title>
+  <!--<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.87/build/spline-viewer.js"></script>-->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.87/build/spline-viewer.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+
+
+</head>
+<style>
+  body{
+    /*background-image: url("{% static 'images/background.png' %}");; /* Replace with your background image URL */
+    background-color : #fff9f3;
+      background-size: cover; /* Cover entire screen */
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0;
+  }
+</style>
+
+<body >
+  
+  <header>
+    <div class="logo">Ratna's Collection</div>
+    <nav class="nav-links">
+      {% if request.path == '/clotheweb/aboutc/' %}
+        <a href="{% url 'homec' %}">🏠 Home</a>
+        <a href="{% url 'cartc' %}">🛒 Cart</a>
+      <!--<a href="{% url 'contactc' %}">📞 Contact</a>-->
+      {% else %}
+        <a href="{% url 'cartc' %}">🛒 Cart</a>
+        <a href="{% url 'aboutc' %}">ℹ️ About</a>
+        <!--<a href="{% url 'contactc' %}">📞 Contact</a>-->
+        
+      {% endif %}
+      
+      {% if user.is_authenticated %}
+        <a href="{% url 'logoutc' %}">🔓 Log Out</a>
+      {% else %}
+        <a href="{% url 'loginc' %}">🔐 Log In</a>
+      {% endif %}
+      
+    </nav>
+  </header>
+
+  {% block content %}
+
+  <div class="hero-section">
+    <div class="left-side">
+      <!--<spline-viewer url="https://prod.spline.design/ATy3ulrWhrj9w7K8/scene.splinecode"></spline-viewer>-->
+      
+<spline-viewer url="https://prod.spline.design/3sLCIWlWmFQ-kr3Y/scene.splinecode"></spline-viewer>
+    </div>
+    <div class="right-side">
+      {% if user.is_authenticated  %}
+        <h1>Welcome back, {{ user.username }}!</h1>
+      {% else %}
+        <h1>Hello user !</h1>
+      {% endif %}
+      <h1>Welcome to Ratna's Collection</h1>
+      <p>Discover stylish clothing curated just for you.</p>
+      <a href="#product-grid" class="rght-button">Explore Now!</a>
+    </div>
+  </div>
+  
+
+{% csrf_token %}
+<div id="flip-container" class="flip-container">
+  <div class="flip-inner">
+    <!-- Front side -->
+    <div class="flip-front">
+      <h1>Click here to explore dresses</h1>
+    </div>
+
+    <!-- Back side with product cards -->
+    <section id="product-grid" class="flip-back product-grid">
+      {% for product in products %}
+      <div class="product-card">
+        <a href="{% url 'product_detail' product.id %}" class="product-link">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}">
+          <h2>{{ product.name }}</h2>
+          <p class="price">₹{{ product.price }}</p>
+          <p class="desc">{{ product.description }}</p>
+        </a>
+      </div>
+      {% endfor %}
+    </section>
+  </div>
+</div>
+
+
+<!-- Contact Information -->
+<footer class="footer-section">
+  <div class="footer-container">
+    <h2>📞 Contact Us</h2>
+    <p><strong>Email:</strong> support@ratnascollection.com</p>
+    <p><strong>Phone:</strong> +91 8669296851 </p>
+    <p><strong>Address:</strong> Nandurbar, Maharashtra, India</p>
+
+    <div class="social-icons">
+      <a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20join%20Ratna's%20Collection%20broadcast!" target="blank" title="Join WhatsApp Broadcast">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="https://www.instagram.com/ratnascollection/" target="blank" title="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com/ratnascollection" target="blank" title="Facebook">
+        <i class="fab fa-facebook"></i>
+      </a>
+    </div>
+
+    <p class="contact-info"> Reach us anytime via email, WhatsApp, or through our <a href="{% url 'contactc' %}" class="contact-link">Contact Page here</a> — we’re here to help you! </p>
+
+    <p class="broadcast-note">📢 Click WhatsApp to join our broadcast list and never miss a new arrival!</p>
+
+    <p class="copyright">
+      © 2025 Ratna’s Collection. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+ 
+  
+  
+  {% endblock content %}
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const flipContainer = document.getElementById('flip-container');
+    const flipInner = flipContainer.querySelector('.flip-inner');
+
+    const flipOnce = () => {
+      console.log('Flip triggered!');  // Debug log
+      flipInner.classList.add('flipped');
+      flipContainer.removeEventListener('mouseenter', flipOnce);
+    };
+
+    flipContainer.addEventListener('mouseenter', flipOnce);
+  });
+</script>
+  
+</body>
+</html>
+

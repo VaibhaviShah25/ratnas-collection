@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/stylesss.css' %}">
+
+</head>
+<body>
+    <h1>Welcome to the Home Page</h1>
+    <p>This is the home page content.</p>
+
+    {% block content %}
+    {% endblock content %}
+
+
+</body>
+
+<script src="{% static 'scripts/script.js' %}"></script>
+</html>

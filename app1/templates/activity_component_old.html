@@ -1,0 +1,17 @@
+
+<h3 style="color: #2c3e50;">
+    
+      Recent Activities
+    </a>
+  </h3>
+  
+        {% for message in room_messages|slice:":2" %}
+        <a href ="{% url 'create-message'%}"> Reply </a> <span> | </span>
+        <a href="{% url 'delete-message' message.id %}" > Delete Message </a>
+        <small> @{{message.host}} - {{message.created | timesince | default:"just now"}} ago replied to "{{message.room}}" </small >
+        <p> {{ message }}</p>
+        <hr/>
+
+        
+        {% endfor %}
+        <a href="{% url 'activity' %}" style="text-decoration: none; color: #007bff;">More </a>

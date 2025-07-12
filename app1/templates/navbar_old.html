@@ -1,0 +1,14 @@
+{% extends 'index_old.html' %}
+
+{% block content %}
+
+<form method="GET" action="{% url 'home' %}">
+    <input type="text" name="q" placeholder="Search..." value="{{ request.GET.q }}"/>
+</form>
+<!-- This is the navbar which is used in all the pages of the website. It contains the logo and search bar. --> 
+
+
+
+<hr>
+
+{% endblock content %}

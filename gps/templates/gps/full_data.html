@@ -1,0 +1,23 @@
+
+{% load static %}
+
+<h2>Wi-Fi Scan Data</h2>
+{% for data in wifi_scan %}
+<div class="data-card2">
+  <p><strong>BSSID:</strong> {{ data.bssid }}</p>
+  <p><strong>ESSID:</strong> {{ data.essid }}</p>
+  <p><strong>Power:</strong> {{ data.power }}</p>
+  <p><strong>Beacons:</strong> {{ data.beacons }}</p>
+  <p><strong>First Time Seen:</strong> {{ data.first }}</p>
+  <p><strong>Last Time Seen:</strong> {{ data.last }}</p>
+  <p><strong>Channel:</strong> {{ data.channel }}</p>
+  <p><strong>Privacy:</strong> {{ data.privacy }}</p>
+  <p><strong>Cipher:</strong> {{ data.cipher }}</p>
+  <p><strong>Authentication:</strong> {{ data.authentication }}</p>
+  <p><strong>IV:</strong> {{ data.iv }}</p>
+  <p><strong>IP:</strong> {{ data.ip }}</p>
+  <p><strong>Identifier:</strong> {{ data.iden }}</p>
+  <p><strong>Key:</strong> {{ data.key }}</p>
+</div>
+{% endfor %}
+

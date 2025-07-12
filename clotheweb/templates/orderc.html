@@ -1,0 +1,66 @@
+{% extends 'homec.html' %}
+{% load static %}
+{% block content %}
+
+<div class="order-section">
+  <div class="order-container">
+    <h1 class="order-title">🧾 Order Summary</h1>
+
+    <div class="order-items">
+      {% for data in cart_items %}
+      <div class="order-card animate-fade">
+        <label>
+          <input type="checkbox" class="item-checkbox" data-subtotal="{{ data.subtotal }}" checked>
+          <img src="{{ data.item.product.image.url }}" alt="{{ data.item.product.name }}">
+          <div class="order-details">
+            <h3>{{ data.item.product.name }}</h3>
+            <p>Quantity: {{ data.item.quantity }}</p>
+            <p>Price: ₹{{ data.item.product.price }}</p>
+            <p>Subtotal: ₹<span class="subtotal">{{ data.subtotal }}</span></p>
+          </div>
+        </label>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="total-block">
+      <p><strong>Total Items:</strong> <span id="total-items">{{ cart_items|length }}</span></p>
+      <p><strong>Estimated Total:</strong> ₹<span id="total-amount">{{ total_amount }}</span></p>
+    </div>
+
+    <form method="post" action="{% url 'deliveryc' %}" class="place-order-form">
+      {% csrf_token %}
+      <button type="submit" class="place-order-button">✅ Confirm & Place Order</button>
+    </form>
+  </div>
+</div>
+
+<!-- Live total update -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const checkboxes = document.querySelectorAll(".item-checkbox");
+    const totalAmountEl = document.getElementById("total-amount");
+    const totalItemsEl = document.getElementById("total-items");
+
+    function updateTotal() {
+      let total = 0;
+      let count = 0;
+      checkboxes.forEach(cb => {
+        if (cb.checked) {
+          total += parseFloat(cb.dataset.subtotal);
+          count += 1;
+        }
+      });
+      totalAmountEl.textContent = total.toFixed(2);
+      totalItemsEl.textContent = count;
+    }
+
+    checkboxes.forEach(cb => {
+      cb.addEventListener("change", updateTotal);
+    });
+
+    updateTotal(); // initial load
+  });
+</script>
+
+{% endblock %}
